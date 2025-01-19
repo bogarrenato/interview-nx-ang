@@ -1,23 +1,10 @@
-import {
-  ComponentFixture,
-  TestBed,
-  fakeAsync,
-  tick,
-} from '@angular/core/testing';
-import {
-  ERROR_REQUEST,
-  ItemDetailsComponent,
-  ItemDetailsStore,
-  LOADING_REQUEST,
-  RESULT_REQUEST,
-  WebRequest,
-} from './item-details.component';
-
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ItemDetailsComponent } from './item-details.component';
 import { ActivatedRoute } from '@angular/router';
-import { of, BehaviorSubject } from 'rxjs';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Item, ItemService } from '../../../app.component';
+import { BehaviorSubject } from 'rxjs';
+import { LOADING_REQUEST, WebRequest } from 'src/app/core/types/webrequest';
+import { Item } from 'src/app/core/models/item';
+import { ItemDetailsStore } from './store/item-details.store';
 
 describe('ItemDetailsComponent', () => {
   let component: ItemDetailsComponent;

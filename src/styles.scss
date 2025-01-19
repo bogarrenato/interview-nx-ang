@@ -1,4 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+  --mdc-theme-primary: #0d47a1; // Ez a kék szín a listás nézetből
+  --mdc-theme-secondary: #ff4081;
+  --mdc-theme-error: #f44336;
+  
+  --mdc-theme-surface: #ffffff;
+  --mdc-theme-on-surface: #000000;
+  --mdc-theme-surface-variant: #f5f5f5;
+  --mdc-theme-on-surface-variant: #666666;
+  
+  --mdc-typography-headline-6-font-size: 1.25rem;
+  --mdc-typography-subtitle-2-font-size: 0.875rem;
+  --mdc-typography-body-2-font-size: 0.875rem;
+  
+  --mdc-elevated-card-container-color: var(--mdc-theme-surface);
+  --mdc-elevated-card-container-shape: 8px;
+  --mdc-elevated-card-container-elevation: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme {
+  --mdc-theme-surface: #1e1e1e;
+  --mdc-theme-on-surface: #ffffff;
+  --mdc-theme-surface-variant: #2d2d2d;
+  --mdc-theme-on-surface-variant: #cccccc;
+  --mdc-elevated-card-container-elevation: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  margin: 0;
+  background-color: var(--mdc-theme-surface);
+  color: var(--mdc-theme-on-surface);
+}
+
+.item-details {
+  &__card.mat-mdc-card {
+    background-color: var(--mdc-theme-surface);
+    color: var(--mdc-theme-on-surface);
+    border-radius: var(--mdc-elevated-card-container-shape);
+    box-shadow: var(--mdc-elevated-card-container-elevation);
+  }
+
+  .mat-mdc-card-title {
+    color: var(--mdc-theme-on-surface);
+  }
+
+  .mat-mdc-card-subtitle {
+    color: var(--mdc-theme-on-surface-variant);
+  }
+
+  .mat-mdc-card-content {
+    color: var(--mdc-theme-on-surface);
+  }
+
+  &__price {
+    color: var(--mdc-theme-primary);
+  }
+
+  // Navigációs gomb javítása
+  .mat-mdc-button {
+    color: var(--mdc-theme-primary);
+    
+    .mat-icon {
+      color: var(--mdc-theme-primary);
+    }
+  }
+}
+
+// Override Material styles with higher specificity
+.mat-mdc-card.item-details__card {
+  .mdc-card {
+    background-color: var(--mdc-theme-surface);
+    border-radius: var(--mdc-elevated-card-container-shape);
+  }
+  
+  .mat-mdc-card-title {
+    font-size: var(--mdc-typography-headline-6-font-size);
+  }
+  
+  .mat-mdc-card-subtitle {
+    font-size: var(--mdc-typography-subtitle-2-font-size);
+  }
+  
+  .mat-mdc-card-content {
+    font-size: var(--mdc-typography-body-2-font-size);
+  }
+
+  .mat-mdc-card-actions {
+    padding: 16px;
+    border-top: 1px solid rgba(var(--mdc-theme-on-surface), 0.12);
+  }
+}
+
+// Price styles
+.item-details__price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--mdc-theme-primary) !important;
+  margin-bottom: 1.5rem;
+}

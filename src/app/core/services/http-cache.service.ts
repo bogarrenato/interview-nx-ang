@@ -10,7 +10,6 @@ export enum CacheExceptions {
 })
 export class HttpCacheService {
   private requests: any = {};
-  constructor() {}
 
   put(url: string, response: HttpResponse<any>): void {
     let isException = false;
