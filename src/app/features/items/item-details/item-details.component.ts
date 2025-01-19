@@ -63,10 +63,19 @@ import { WebRequest } from 'src/app/core/types/webrequest';
         </mat-card-content>
 
         <mat-card-actions align="end" class="item-details__actions">
-          <a routerLink="/items" mat-button class="item-details__back-button">
+          <button
+            mat-raised-button
+            color="primary"
+            class="item-details__back-button"
+            (click)="openBlankPage()"
+            (keydown.enter)="openBlankPage()"
+            (keydown.space)="openBlankPage()"
+            role="button"
+            [attr.aria-label]="'Open in new page'"
+          >
             <mat-icon class="item-details__back-icon">arrow_back</mat-icon>
-            Back to List
-          </a>
+            Open page
+          </button>
         </mat-card-actions>
       </mat-card>
       } }
@@ -135,11 +144,16 @@ export class ItemDetailsComponent implements OnInit {
   private readonly itemDetailsStore: ItemDetailsStore =
     inject(ItemDetailsStore);
   private readonly activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+  private readonly itemId: string = this.activatedRoute.snapshot.params['id'];
 
   readonly itemDetails$: Observable<WebRequest<Item>> =
     this.itemDetailsStore.details$;
 
   ngOnInit(): void {
-    this.itemDetailsStore.getDetails(this.activatedRoute.snapshot.params['id']);
+    this.itemDetailsStore.getDetails(this.itemId);
+  }
+
+  openBlankPage(): void {
+    window.open(`https://random.com/${this.itemId}`, '_blank');
   }
 }
