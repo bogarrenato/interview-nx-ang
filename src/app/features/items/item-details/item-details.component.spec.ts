@@ -26,10 +26,6 @@ describe('ItemDetailsComponent', () => {
     },
   };
 
-  const mockItemService = {
-    // Mock methods used by ItemDetailsStore
-  };
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ItemDetailsComponent],
@@ -38,7 +34,6 @@ describe('ItemDetailsComponent', () => {
           provide: ItemDetailsStore,
           useValue: mockItemDetailStore,
         },
-        // { provide: ItemService, useValue: mockItemService },
         {
           provide: ActivatedRoute,
           useValue: mockActivatedRoute,
