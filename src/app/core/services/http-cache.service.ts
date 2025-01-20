@@ -2,7 +2,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export enum CacheExceptions {
-  'login/captchaimage',
+  'exception/smth',
 }
 
 @Injectable({

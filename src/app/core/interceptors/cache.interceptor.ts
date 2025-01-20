@@ -1,6 +1,6 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpInterceptorFn, HttpRequest, HttpResponse } from "@angular/common/http";
-import { Injectable, inject } from "@angular/core";
-import { Observable, of, tap } from "rxjs";
+import { HttpInterceptorFn, HttpResponse } from "@angular/common/http";
+import { inject } from "@angular/core";
+import { of, tap } from "rxjs";
 import { HttpCacheService } from "../services/http-cache.service";
 
 export const cacheInterceptor: HttpInterceptorFn = (req, next) => {
