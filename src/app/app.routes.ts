@@ -14,11 +14,11 @@ export const routes: Routes = [
         (m) => m.featurelib1Routes
       ),
   },
-  // {
-  //   path: 'feature2',
-  //   loadChildren: () =>
-  //     import('@interview-workspace/featurelib2').then(
-  //       (m) => m.Featurelib2Module
-  //     ),
-  // },
+  {
+    path: 'feature2',
+    loadChildren: () =>
+      import('@interview-workspace/featurelib2').then(
+        (m) => m.featurelib2Routes
+      ),
+  },
 ];
