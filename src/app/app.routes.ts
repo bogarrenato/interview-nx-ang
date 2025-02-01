@@ -7,4 +7,18 @@ export const routes: Routes = [
   { path: '', redirectTo: 'items', pathMatch: 'full' },
   { path: 'items', component: ItemListComponent },
   { path: 'items/:id', component: ItemDetailsComponent },
+  {
+    path: 'feature1',
+    loadChildren: () =>
+      import('@interview-workspace/featurelib1').then(
+        (m) => m.featurelib1Routes
+      ),
+  },
+  // {
+  //   path: 'feature2',
+  //   loadChildren: () =>
+  //     import('@interview-workspace/featurelib2').then(
+  //       (m) => m.Featurelib2Module
+  //     ),
+  // },
 ];
