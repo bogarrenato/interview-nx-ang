@@ -31,4 +31,23 @@ jobs:
           main-branch-name: 'main'
 
       - run: npx nx reset # Cache tisztítása
-      - run: npx nx affected --base=main -t lint test build e2e
+      
+      # Affected projektek listázása
+      - name: Print Affected Projects
+        run: npx nx print-affected --base=main --select=projects
+      
+      # Részletes időzítési report
+      - name: Run Affected with Report
+        run: |
+          echo "=== Starting Affected Analysis ==="
+          npx nx affected --base=main -t lint test build e2e --verbose
+          echo "=== Affected Tasks Report ==="
+          npx nx report
+
+      # Opcionális: Build idő mentése artifact-ként
+      - name: Save Build Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: nx-report
+          path: dist/nxdeps.json
