@@ -32,19 +32,20 @@ jobs:
 
       - run: npx nx reset # Cache tisztítása
 
-      # Affected projektek listázása
-      - name: Print Affected Projects
-        run: npx nx print-affected --base=main --select=projects
+      # Új parancsok az Nx 19-hez
+      - name: Show Affected Projects
+        run: npx nx show projects --affected --base=main
 
-      # Részletes időzítési report
-      - name: Run Affected with Report
+      - name: Show Affected Graph
+        run: npx nx affected --graph -t build --base=main
+
+      # Futtatás és időmérés
+      - name: Run Affected Tasks with Timing
         run: |
           echo "=== Starting Affected Analysis ==="
-          npx nx affected --base=main -t lint test build e2e --verbose
-          echo "=== Affected Tasks Report ==="
-          npx nx report
+          time npx nx affected --base=main -t lint test build e2e --verbose
 
-      # Frissített verzió v4-re
+      # Build report mentése
       - name: Save Build Report
         if: always()
         uses: actions/upload-artifact@v4
