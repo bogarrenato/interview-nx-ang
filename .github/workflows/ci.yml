@@ -31,11 +31,11 @@ jobs:
           main-branch-name: 'main'
 
       - run: npx nx reset # Cache tisztítása
-      
+
       # Affected projektek listázása
       - name: Print Affected Projects
         run: npx nx print-affected --base=main --select=projects
-      
+
       # Részletes időzítési report
       - name: Run Affected with Report
         run: |
@@ -44,10 +44,10 @@ jobs:
           echo "=== Affected Tasks Report ==="
           npx nx report
 
-      # Opcionális: Build idő mentése artifact-ként
+      # Frissített verzió v4-re
       - name: Save Build Report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: nx-report
           path: dist/nxdeps.json
